@@ -10,6 +10,19 @@ $muve-gray: #6C757D;
 $muve-dark-gray: #343A40;
 $muve-black: #000000;
 
+// Brand color variations
+$muve-orange-light: lighten($muve-orange, 10%);
+$muve-orange-dark: darken($muve-orange, 10%);
+$muve-blue-light: lighten($muve-blue, 10%);
+$muve-blue-dark: darken($muve-blue, 10%);
+
+// Semantic brand colors
+$brand-playful: $muve-yellow;
+$brand-trust: $muve-blue;
+$brand-energy: $muve-orange;
+$brand-calm: $muve-light-blue;
+$brand-professional: $muve-dark-blue;
+
 // Primary colors
 $primary-color: $muve-orange;
 $secondary-color: $muve-blue;

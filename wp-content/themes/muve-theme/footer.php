@@ -40,9 +40,12 @@
             </div>
         </div>
 
-        <div class="site-info">
+        <div class="site-info bg-muve-dark-blue">
             <div class="container">
                 <div class="footer-bottom">
+                    <div class="footer-logo">
+                        <?php echo muve_get_logo('white', 'small'); ?>
+                    </div>
                     <div class="footer-copyright">
                         &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. 
                         <?php esc_html_e('All rights reserved.', 'muve-theme'); ?>

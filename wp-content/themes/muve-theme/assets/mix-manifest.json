@@ -1,5 +1,10 @@
 {
     "/js/main.js": "/js/main.js?id=a678d187a54fb8aeb5bcd8897992a1d6",
     "/js/navigation.js": "/js/navigation.js?id=f2fd81294d64ac82077fac7400a017da",
-    "/css/main.css": "/css/main.css?id=6cd60c70b3fe6a191f01a948398b4791"
+    "/css/main.css": "/css/main.css?id=8761479c86e661fb799cf4ecf5adf5d2",
+    "/images/brand/favicon.svg": "/images/brand/favicon.svg?id=83f7d230ce05dc5e1763e856ff1899ae",
+    "/images/logos/muve-logo-black.svg": "/images/logos/muve-logo-black.svg?id=9054e2daf7828077a322174c6981792e",
+    "/images/logos/muve-logo-blue.svg": "/images/logos/muve-logo-blue.svg?id=4b71a82f5e6023ecf55737336bcb1a5a",
+    "/images/logos/muve-logo-orange.svg": "/images/logos/muve-logo-orange.svg?id=33e07360642e0f21e4b2b0f855ae039a",
+    "/images/logos/muve-logo-white.svg": "/images/logos/muve-logo-white.svg?id=20030e2e96480b08ba68eff6c5f23de0"
 }

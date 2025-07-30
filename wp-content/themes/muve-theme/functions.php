@@ -190,6 +190,7 @@ require MUVE_THEME_DIR . '/inc/custom-post-types.php';
  * Load custom taxonomies
  */
 require MUVE_THEME_DIR . '/inc/custom-taxonomies.php';
+require MUVE_THEME_DIR . '/inc/brand-assets.php';
 
 /**
  * MUVE Brand Colors

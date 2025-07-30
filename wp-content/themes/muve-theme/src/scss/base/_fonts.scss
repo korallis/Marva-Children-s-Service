@@ -1,0 +1,96 @@
+// Google Fonts Import
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
+
+// Font Face Declarations for local fonts (if needed)
+// @font-face {
+//   font-family: 'MUVE Custom';
+//   src: url('../fonts/muve-custom.woff2') format('woff2'),
+//        url('../fonts/muve-custom.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// Font Classes
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-secondary {
+  font-family: var(--font-secondary);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+// Font Weight Classes
+.font-light {
+  font-weight: var(--font-weight-light);
+}
+
+.font-regular {
+  font-weight: var(--font-weight-regular);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+// Text Size Classes
+.text-xs {
+  font-size: var(--font-size-xs);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+
+.text-base {
+  font-size: var(--font-size-base);
+}
+
+.text-lg {
+  font-size: var(--font-size-lg);
+}
+
+.text-xl {
+  font-size: var(--font-size-xl);
+}
+
+.text-2xl {
+  font-size: var(--font-size-2xl);
+}
+
+.text-3xl {
+  font-size: var(--font-size-3xl);
+}
+
+.text-4xl {
+  font-size: var(--font-size-4xl);
+}
+
+.text-5xl {
+  font-size: var(--font-size-5xl);
+}
+
+// Playful text styles for MUVE
+.text-playful {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-medium);
+  color: var(--muve-orange);
+}
+
+.text-friendly {
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+}

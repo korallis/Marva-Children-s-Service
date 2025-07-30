@@ -11,6 +11,8 @@
 
 // 3. Base styles
 @import 'base/reset';
+@import 'base/custom-properties';
+@import 'base/fonts';
 @import 'base/typography';
 @import 'base/base';
 
@@ -42,4 +44,5 @@
 // 8. Utilities
 @import 'utilities/accessibility';
 @import 'utilities/helpers';
+@import 'utilities/brand';
 @import 'utilities/print';

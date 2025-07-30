@@ -1,0 +1,122 @@
+// CSS Custom Properties for MUVE Brand
+:root {
+  // Brand Colors
+  --muve-orange: #FF6B35;
+  --muve-blue: #4ECDC4;
+  --muve-yellow: #FFE66D;
+  --muve-light-blue: #A8DADC;
+  --muve-dark-blue: #1D3557;
+  --muve-white: #FFFFFF;
+  --muve-light-gray: #F8F9FA;
+  --muve-gray: #6C757D;
+  --muve-dark-gray: #343A40;
+  --muve-black: #000000;
+  
+  // Brand variations
+  --muve-orange-light: #FF8A5B;
+  --muve-orange-dark: #E64C16;
+  --muve-blue-light: #6FD7D0;
+  --muve-blue-dark: #3DB8AF;
+  
+  // Primary colors
+  --color-primary: var(--muve-orange);
+  --color-secondary: var(--muve-blue);
+  --color-accent: var(--muve-yellow);
+  
+  // Text colors
+  --text-primary: var(--muve-dark-gray);
+  --text-secondary: var(--muve-gray);
+  --text-light: var(--muve-white);
+  --text-on-primary: var(--muve-white);
+  --text-on-secondary: var(--muve-dark-blue);
+  
+  // Background colors
+  --bg-primary: var(--muve-white);
+  --bg-secondary: var(--muve-light-gray);
+  --bg-dark: var(--muve-dark-blue);
+  --bg-accent: var(--muve-yellow);
+  
+  // Typography
+  --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-secondary: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Fredoka', 'Poppins', sans-serif;
+  
+  // Font weights
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  // Font sizes
+  --font-size-xs: 0.75rem;    // 12px
+  --font-size-sm: 0.875rem;   // 14px
+  --font-size-base: 1rem;     // 16px
+  --font-size-lg: 1.125rem;   // 18px
+  --font-size-xl: 1.25rem;    // 20px
+  --font-size-2xl: 1.5rem;    // 24px
+  --font-size-3xl: 1.875rem;  // 30px
+  --font-size-4xl: 2.25rem;   // 36px
+  --font-size-5xl: 3rem;      // 48px
+  
+  // Line heights
+  --line-height-tight: 1.25;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  // Spacing
+  --spacing-xs: 0.5rem;   // 8px
+  --spacing-sm: 1rem;     // 16px
+  --spacing-md: 1.5rem;   // 24px
+  --spacing-lg: 2rem;     // 32px
+  --spacing-xl: 3rem;     // 48px
+  --spacing-2xl: 4rem;    // 64px
+  
+  // Border radius
+  --radius-sm: 0.25rem;   // 4px
+  --radius-md: 0.5rem;    // 8px
+  --radius-lg: 1rem;      // 16px
+  --radius-xl: 1.5rem;    // 24px
+  --radius-full: 9999px;
+  
+  // Shadows
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-colored: 0 8px 30px rgba(255, 107, 53, 0.15);
+  
+  // Transitions
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+  
+  // Z-index layers
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+// Dark mode support (optional)
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: var(--muve-light-gray);
+    --bg-primary: var(--muve-dark-blue);
+    --bg-secondary: var(--muve-dark-gray);
+  }
+}
+
+// Playful theme variations
+.theme-playful {
+  --color-primary: var(--muve-yellow);
+  --color-secondary: var(--muve-orange);
+}
+
+.theme-calm {
+  --color-primary: var(--muve-light-blue);
+  --color-secondary: var(--muve-blue);
+}
