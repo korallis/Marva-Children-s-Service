@@ -45,8 +45,8 @@ get_header(); ?>
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="hero__image">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-placeholder.svg" 
-                             alt="Happy children playing" 
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-image.jpg" 
+                             alt="MUVE Children's Services" 
                              loading="eager">
                     </div>
                 </div>
@@ -64,7 +64,7 @@ get_header(); ?>
             
             <div class="grid grid--3 grid--gap-lg">
                 <div class="service-card">
-                    <div class="service-card__icon">🎯</div>
+                    <div class="service-card__icon">🌟</div>
                     <h3 class="card__title">Behavioral Support</h3>
                     <div class="card__body">
                         <p>Evidence-based interventions to help children develop positive behaviors and social skills.</p>
@@ -75,7 +75,7 @@ get_header(); ?>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-card__icon">💬</div>
+                    <div class="service-card__icon">🗣️</div>
                     <h3 class="card__title">Speech Therapy</h3>
                     <div class="card__body">
                         <p>Specialized therapy to improve communication skills and language development.</p>
@@ -86,7 +86,7 @@ get_header(); ?>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-card__icon">🤝</div>
+                    <div class="service-card__icon">🏃</div>
                     <h3 class="card__title">Occupational Therapy</h3>
                     <div class="card__body">
                         <p>Helping children develop the skills needed for daily activities and independence.</p>
@@ -100,8 +100,9 @@ get_header(); ?>
     </section>
 
     <!-- Call to Action -->
-    <section class="hero hero--playful hero--small">
-        <div class="container">
+    <section class="hero hero--playful hero--small" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/banner-2.png'); background-size: cover; background-position: center;">
+        <div class="hero__background" style="background: rgba(255, 255, 255, 0.9);"></div>
+        <div class="container position-relative">
             <div class="hero__content hero__content--centered">
                 <h2 class="hero__title">Ready to Begin?</h2>
                 <p class="hero__description">

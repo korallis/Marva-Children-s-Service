@@ -2,10 +2,14 @@
     "/js/main.js": "/js/main.js?id=a678d187a54fb8aeb5bcd8897992a1d6",
     "/js/navigation.js": "/js/navigation.js?id=f2fd81294d64ac82077fac7400a017da",
     "/css/main.css": "/css/main.css?id=ef7996661b6252516931205989a721dd",
-    "/images/brand/favicon.svg": "/images/brand/favicon.svg?id=83f7d230ce05dc5e1763e856ff1899ae",
-    "/images/hero-placeholder.svg": "/images/hero-placeholder.svg?id=a2768480a8eb1b7bb58f1a1b4ec0e7e5",
-    "/images/logos/muve-logo-black.svg": "/images/logos/muve-logo-black.svg?id=9054e2daf7828077a322174c6981792e",
-    "/images/logos/muve-logo-blue.svg": "/images/logos/muve-logo-blue.svg?id=4b71a82f5e6023ecf55737336bcb1a5a",
-    "/images/logos/muve-logo-orange.svg": "/images/logos/muve-logo-orange.svg?id=33e07360642e0f21e4b2b0f855ae039a",
-    "/images/logos/muve-logo-white.svg": "/images/logos/muve-logo-white.svg?id=20030e2e96480b08ba68eff6c5f23de0"
+    "/images/banner-1.png": "/images/banner-1.png?id=89d3248016f46111eafabfd36832d2c8",
+    "/images/banner-2.png": "/images/banner-2.png?id=a549b30348890afd03ea95eb79ed3d77",
+    "/images/brand/apple-touch-icon.png": "/images/brand/apple-touch-icon.png?id=ad7e0c4255f5553da3ec1cca3bda7359",
+    "/images/brand/favicon.png": "/images/brand/favicon.png?id=ad7e0c4255f5553da3ec1cca3bda7359",
+    "/images/hero-image.jpg": "/images/hero-image.jpg?id=1f4b7a5a99679f78270b9822c3587a52",
+    "/images/logos/muve-logo-black.png": "/images/logos/muve-logo-black.png?id=59643b768d4b235f86c468add3493446",
+    "/images/logos/muve-logo-blue.png": "/images/logos/muve-logo-blue.png?id=2eebc5fb27a658d6e0fde2c3e2075c5a",
+    "/images/logos/muve-logo-orange.png": "/images/logos/muve-logo-orange.png?id=ad7e0c4255f5553da3ec1cca3bda7359",
+    "/images/logos/muve-logo-white.png": "/images/logos/muve-logo-white.png?id=15d54dc5df46d88b873632cb4e125ddb",
+    "/images/logos/muve-logo-yellow.png": "/images/logos/muve-logo-yellow.png?id=c162dd43be60db7f09c41f65a84ae32c"
 }
