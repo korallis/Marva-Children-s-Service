@@ -29,11 +29,19 @@ Claude will automatically review PRs and check for:
 - Performance issues
 - Accessibility concerns
 - Best practices
+- Docker configuration validity
+
+**Auto-Merge Feature**: If Claude finds no issues and all checks pass, PRs will be automatically merged (except for protected branches and security-related changes).
 
 To request a specific review, comment:
 ```
 @claude-ai please review this PR focusing on [specific area]
 ```
+
+To prevent auto-merge, add one of these labels:
+- `needs-discussion`
+- `security`
+- `breaking-change`
 
 ### For Issues
 

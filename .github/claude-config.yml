@@ -1,0 +1,110 @@
+# Claude GitHub Bot Configuration
+
+# Bot behavior settings
+behavior:
+  # Auto-merge settings
+  auto_merge:
+    enabled: true
+    conditions:
+      - no_issues_found: true
+      - all_checks_passed: true
+      - approved_by_claude: true
+    merge_method: squash  # options: merge, squash, rebase
+    delete_branch_after_merge: true
+    
+  # Review settings
+  review:
+    auto_review_prs: true
+    review_draft_prs: false
+    comment_on_approval: true
+    
+# Tool permissions
+allowed_tools:
+  - docker
+  - docker-compose
+  - wp-cli
+  - npm
+  - composer
+  - git
+  - bash
+  - php
+  - mysql
+  
+# Security settings
+security:
+  block_on_security_issues: true
+  require_signed_commits: false
+  
+# Focus areas for reviews
+review_focus:
+  - wordpress_standards
+  - security_vulnerabilities
+  - performance_issues
+  - accessibility_compliance
+  - docker_best_practices
+  - code_quality
+  - test_coverage
+  
+# Auto-merge exclusions (never auto-merge these)
+auto_merge_exclusions:
+  files:
+    - .env
+    - wp-config.php
+    - docker-compose.yml
+    - .github/workflows/*
+  branches:
+    - main
+    - production
+  labels:
+    - security
+    - breaking-change
+    - needs-discussion
+    
+# Response templates
+templates:
+  approval_message: |
+    ✅ **Claude Review Complete**
+    
+    No issues found! This PR meets all quality standards:
+    - ✓ WordPress coding standards
+    - ✓ Security checks passed
+    - ✓ Performance considerations met
+    - ✓ Docker configuration valid
+    
+    Auto-merging as configured...
+    
+  needs_changes_message: |
+    🔍 **Claude Review Complete**
+    
+    I found some issues that need attention:
+    
+    {issues}
+    
+    Please address these before merging.
+    
+# Docker-specific settings
+docker:
+  validate_compose: true
+  check_security_best_practices: true
+  scan_images: true
+  allowed_base_images:
+    - wordpress:*-php8.3-apache
+    - mysql:8.0
+    - phpmyadmin:latest
+    - node:18-alpine
+    
+# WordPress-specific settings
+wordpress:
+  check_coding_standards: true
+  validate_plugin_headers: true
+  check_deprecated_functions: true
+  minimum_php_version: "8.3"
+  required_plugins:
+    - wordfence
+    - wordpress-seo
+    
+# Notification settings
+notifications:
+  notify_on_auto_merge: true
+  notify_on_security_issues: true
+  mention_users_on_critical: ["@korallis"]
