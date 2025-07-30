@@ -1,0 +1,24 @@
+# CODEOWNERS file for automatic review requests
+
+# Default owner for everything
+* @korallis
+
+# WordPress theme files
+/wp-content/themes/ @korallis
+
+# Docker and infrastructure
+/docker-compose.yml @korallis
+/Dockerfile @korallis
+/.dockerignore @korallis
+
+# GitHub Actions
+/.github/workflows/ @korallis
+
+# Security-sensitive files (require explicit review)
+.env* @korallis
+wp-config.php @korallis
+/wp-content/plugins/wordfence/ @korallis
+
+# Documentation
+/docs/ @korallis
+*.md @korallis
