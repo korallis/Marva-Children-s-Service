@@ -12,8 +12,7 @@ function muve_add_favicon() {
     $favicon_path = get_template_directory_uri() . '/assets/images/brand/';
     ?>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo esc_url($favicon_path . 'favicon-32x32.png'); ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo esc_url($favicon_path . 'favicon-16x16.png'); ?>">
+    <link rel="icon" type="image/png" href="<?php echo esc_url($favicon_path . 'favicon.png'); ?>">
     
     <!-- Apple Touch Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url($favicon_path . 'apple-touch-icon.png'); ?>">
@@ -58,7 +57,7 @@ add_action('after_setup_theme', 'muve_custom_logo_setup');
  */
 function muve_get_logo($color = 'orange', $size = 'medium') {
     $logo_path = get_template_directory_uri() . '/assets/images/logos/';
-    $logo_file = 'muve-logo-' . $color . '.svg';
+    $logo_file = 'muve-logo-' . $color . '.png';
     
     $sizes = array(
         'small'  => 'logo-container--small',
