@@ -1,0 +1,135 @@
+// Base styles
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $bg-primary;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Skip to content link
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: $primary-color;
+  color: $text-light;
+  padding: $spacing-sm $spacing-md;
+  text-decoration: none;
+  z-index: z('tooltip');
+  
+  &:focus {
+    top: 0;
+  }
+}
+
+// Main content area
+#content {
+  flex: 1;
+  padding: $spacing-xl 0;
+  
+  @include breakpoint(sm) {
+    padding: $spacing-lg 0;
+  }
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: $container-xl;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  
+  @include breakpoint(xl) {
+    max-width: $container-xl;
+  }
+  
+  @include breakpoint(lg) {
+    max-width: $container-lg;
+  }
+  
+  @include breakpoint(md) {
+    max-width: $container-md;
+  }
+  
+  @include breakpoint(sm) {
+    padding: 0 $spacing-md;
+  }
+}
+
+// Content area with sidebar
+.content-area {
+  @include breakpoint(md) {
+    display: flex;
+    gap: $spacing-xl;
+  }
+  
+  .site-main {
+    flex: 1;
+  }
+  
+  .widget-area {
+    @include breakpoint(md) {
+      flex: 0 0 300px;
+    }
+  }
+}
+
+// Screen reader text
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  
+  &:focus {
+    background-color: $bg-secondary;
+    border-radius: $border-radius-sm;
+    box-shadow: $shadow-lg;
+    clip: auto !important;
+    clip-path: none;
+    color: $text-primary;
+    display: block;
+    font-size: $font-size-base;
+    font-weight: 700;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: $spacing-md $spacing-lg;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: z('tooltip');
+  }
+}
+
+// Alignments
+.alignleft {
+  float: left;
+  margin-right: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+.alignright {
+  float: right;
+  margin-left: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: $spacing-md;
+}

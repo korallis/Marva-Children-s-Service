@@ -1,0 +1,45 @@
+// MUVE Children's Services Theme Main Stylesheet
+// ==============================================
+
+// 1. Configuration and Variables
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/functions';
+
+// 2. Vendors
+@import 'vendors/normalize';
+
+// 3. Base styles
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/base';
+
+// 4. Layout
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/navigation';
+@import 'layout/sidebar';
+@import 'layout/footer';
+
+// 5. Components
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/widgets';
+@import 'components/hero';
+@import 'components/animations';
+
+// 6. Pages
+@import 'pages/home';
+@import 'pages/about';
+@import 'pages/services';
+@import 'pages/contact';
+@import 'pages/blog';
+
+// 7. Themes
+@import 'themes/default';
+
+// 8. Utilities
+@import 'utilities/accessibility';
+@import 'utilities/helpers';
+@import 'utilities/print';

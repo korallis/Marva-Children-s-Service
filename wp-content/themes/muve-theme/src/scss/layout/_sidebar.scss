@@ -1,0 +1,126 @@
+// Sidebar
+.widget-area {
+  margin-top: $spacing-xl;
+  
+  @include breakpoint(md) {
+    margin-top: 0;
+  }
+}
+
+// Widgets
+.widget {
+  margin-bottom: $spacing-xl;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  .widget-title {
+    font-size: $font-size-h5;
+    color: $muve-dark-blue;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 3px solid $primary-color;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      padding: $spacing-sm 0;
+      border-bottom: 1px solid rgba($muve-gray, 0.1);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    
+    a {
+      color: $text-primary;
+      text-decoration: none;
+      
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+  
+  // Search widget
+  &.widget_search {
+    .search-form {
+      display: flex;
+      
+      .search-field {
+        flex: 1;
+        padding: $spacing-sm $spacing-md;
+        border: 1px solid rgba($muve-gray, 0.3);
+        border-radius: $border-radius-md 0 0 $border-radius-md;
+        font-size: $font-size-base;
+        
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+      
+      .search-submit {
+        @include button-style($primary-color);
+        border-radius: 0 $border-radius-md $border-radius-md 0;
+        padding: $spacing-sm $spacing-md;
+      }
+    }
+  }
+  
+  // Categories widget
+  &.widget_categories {
+    ul li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .post-count {
+      font-size: $font-size-small;
+      color: $text-secondary;
+    }
+  }
+  
+  // Recent posts widget
+  &.widget_recent_entries {
+    ul li {
+      padding: $spacing-md 0;
+    }
+    
+    .post-date {
+      display: block;
+      font-size: $font-size-small;
+      color: $text-secondary;
+      margin-top: $spacing-xs;
+    }
+  }
+  
+  // Tag cloud widget
+  &.widget_tag_cloud {
+    .tagcloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-sm;
+      
+      a {
+        display: inline-block;
+        padding: $spacing-xs $spacing-sm;
+        background-color: $bg-secondary;
+        border-radius: $border-radius-sm;
+        font-size: $font-size-small !important;
+        text-decoration: none;
+        transition: all $transition-fast;
+        
+        &:hover {
+          background-color: $primary-color;
+          color: $text-light;
+        }
+      }
+    }
+  }
+}

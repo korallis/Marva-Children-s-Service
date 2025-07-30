@@ -1,0 +1,46 @@
+{
+  "name": "muve-theme",
+  "version": "1.0.0",
+  "description": "MUVE Children's Services WordPress Theme",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production",
+    "build": "npm run production"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "muve"
+  ],
+  "author": "MUVE Development Team",
+  "license": "Proprietary",
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "@wordpress/browserslist-config": "^4.1.0",
+    "autoprefixer": "^10.4.0",
+    "babel-loader": "^8.2.3",
+    "browser-sync": "^2.27.7",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.5.1",
+    "cssnano": "^5.0.12",
+    "laravel-mix": "^6.0.39",
+    "postcss": "^8.4.5",
+    "postcss-loader": "^6.2.1",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.45.0",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ]
+}

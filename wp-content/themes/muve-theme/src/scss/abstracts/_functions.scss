@@ -1,0 +1,33 @@
+// Convert px to rem
+@function rem($pixels, $base: 16) {
+  @return #{$pixels / $base}rem;
+}
+
+// Convert px to em
+@function em($pixels, $base: 16) {
+  @return #{$pixels / $base}em;
+}
+
+// Z-index management
+$z-indexes: (
+  'dropdown': 1000,
+  'sticky': 1020,
+  'fixed': 1030,
+  'modal-backdrop': 1040,
+  'modal': 1050,
+  'popover': 1060,
+  'tooltip': 1070
+);
+
+@function z($key) {
+  @return map-get($z-indexes, $key);
+}
+
+// Color functions
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}

@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  wordpress:
+    image: wordpress:6.7-php8.3-apache
+    container_name: muve_wordpress
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ${MYSQL_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:-wordpress}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE:-muve_wordpress}
+      WORDPRESS_TABLE_PREFIX: ${WORDPRESS_TABLE_PREFIX:-wp_}
+      WORDPRESS_DEBUG: ${WORDPRESS_DEBUG:-false}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_MEMORY_LIMIT', '256M');
+        define('WP_MAX_MEMORY_LIMIT', '512M');
+        define('WP_POST_REVISIONS', 10);
+        define('AUTOSAVE_INTERVAL', 300);
+        define('WP_AUTO_UPDATE_CORE', 'minor');
+        define('DISALLOW_FILE_EDIT', true);
+        define('WP_CACHE', true);
+        define('COMPRESS_CSS', true);
+        define('COMPRESS_SCRIPTS', true);
+        define('CONCATENATE_SCRIPTS', false);
+        define('ENFORCE_GZIP', true);
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    depends_on:
+      - db
+    networks:
+      - muve_network
+
+  db:
+    image: mysql:8.0
+    container_name: muve_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-muve_wordpress}
+      MYSQL_USER: ${MYSQL_USER:-wordpress}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-wordpress}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    command: '--default-authentication-plugin=mysql_native_password'
+    networks:
+      - muve_network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: muve_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 100M
+    depends_on:
+      - db
+    networks:
+      - muve_network
+
+volumes:
+  wordpress_data:
+  db_data:
+
+networks:
+  muve_network:
+    driver: bridge
