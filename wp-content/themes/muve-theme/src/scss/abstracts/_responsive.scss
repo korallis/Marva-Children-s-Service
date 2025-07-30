@@ -1,0 +1,239 @@
+// Responsive Mixins and Functions
+
+// Media Query Mixin
+@mixin media($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else if type-of($breakpoint) == number {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint: #{$breakpoint}";
+  }
+}
+
+// Media Query Max Width
+@mixin media-max($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    @media (max-width: ($breakpoint-value - 1px)) {
+      @content;
+    }
+  } @else if type-of($breakpoint) == number {
+    @media (max-width: ($breakpoint - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint: #{$breakpoint}";
+  }
+}
+
+// Media Query Between
+@mixin media-between($min, $max) {
+  $min-value: if(map-has-key($breakpoints, $min), map-get($breakpoints, $min), $min);
+  $max-value: if(map-has-key($breakpoints, $max), map-get($breakpoints, $max), $max);
+  
+  @media (min-width: $min-value) and (max-width: ($max-value - 1px)) {
+    @content;
+  }
+}
+
+// Responsive Property Mixin
+@mixin responsive-property($property, $mobile, $tablet: null, $desktop: null, $large: null) {
+  #{$property}: $mobile;
+  
+  @if $tablet {
+    @include media(sm) {
+      #{$property}: $tablet;
+    }
+  }
+  
+  @if $desktop {
+    @include media(md) {
+      #{$property}: $desktop;
+    }
+  }
+  
+  @if $large {
+    @include media(lg) {
+      #{$property}: $large;
+    }
+  }
+}
+
+// Responsive Font Size
+@mixin responsive-font-size($mobile, $tablet: null, $desktop: null, $large: null) {
+  @include responsive-property(font-size, $mobile, $tablet, $desktop, $large);
+}
+
+// Container Mixin
+@mixin container($max-width: null) {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+  
+  @if $max-width {
+    max-width: $max-width;
+  } @else {
+    @include media(sm) {
+      max-width: $container-sm;
+    }
+    
+    @include media(md) {
+      max-width: $container-md;
+      padding-left: var(--spacing-lg);
+      padding-right: var(--spacing-lg);
+    }
+    
+    @include media(lg) {
+      max-width: $container-lg;
+    }
+    
+    @include media(xl) {
+      max-width: $container-xl;
+    }
+  }
+}
+
+// Aspect Ratio Mixin
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    display: block;
+    padding-top: percentage($height / $width);
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Hide on Breakpoint
+@mixin hide-on($breakpoint) {
+  @include media($breakpoint) {
+    display: none !important;
+  }
+}
+
+// Show on Breakpoint
+@mixin show-on($breakpoint) {
+  display: none !important;
+  
+  @include media($breakpoint) {
+    display: block !important;
+  }
+}
+
+// Touch Device Detection
+@mixin touch-device {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+
+// High Resolution Display
+@mixin retina {
+  @media 
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+// Orientation
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+// Responsive Grid Columns
+@mixin make-grid-columns($columns: 12, $breakpoint: null) {
+  $prefix: if($breakpoint, '#{$breakpoint}-', '');
+  
+  @for $i from 1 through $columns {
+    .col-#{$prefix}#{$i} {
+      flex: 0 0 percentage($i / $columns);
+      max-width: percentage($i / $columns);
+    }
+  }
+}
+
+// Responsive Spacing
+@mixin responsive-spacing($property, $side: null) {
+  $sides: if($side, $side, '');
+  
+  @each $size, $value in (
+    '0': 0,
+    '1': var(--spacing-xs),
+    '2': var(--spacing-sm),
+    '3': var(--spacing-md),
+    '4': var(--spacing-lg),
+    '5': var(--spacing-xl),
+    '6': var(--spacing-2xl)
+  ) {
+    .#{$property}#{$sides}-#{$size} {
+      @if $side {
+        #{$property}-#{$side}: $value !important;
+      } @else {
+        #{$property}: $value !important;
+      }
+    }
+  }
+}
+
+// Clamp Values for Fluid Typography
+@function clamp-value($min, $max, $min-vw: 375px, $max-vw: 1440px) {
+  $slope: ($max - $min) / ($max-vw - $min-vw);
+  $y-intercept: $min - $slope * $min-vw;
+  
+  @return clamp(
+    #{$min},
+    #{$y-intercept} + #{$slope * 100}vw,
+    #{$max}
+  );
+}
+
+// Fluid Typography Mixin
+@mixin fluid-type($min-size: 14px, $max-size: 18px, $min-vw: 375px, $max-vw: 1440px) {
+  font-size: $min-size;
+  font-size: clamp-value($min-size, $max-size, $min-vw, $max-vw);
+}
+
+// Breakpoint Map
+$breakpoints: (
+  'xs': 0,
+  'sm': $breakpoint-sm,
+  'md': $breakpoint-md,
+  'lg': $breakpoint-lg,
+  'xl': $breakpoint-xl
+);
+
+// Helper function to get breakpoint value
+@function breakpoint($name) {
+  @if map-has-key($breakpoints, $name) {
+    @return map-get($breakpoints, $name);
+  } @else {
+    @warn "Breakpoint #{$name} not found";
+    @return null;
+  }
+}

@@ -1,14 +1,16 @@
 // Site header
 .site-header {
-  background-color: $bg-primary;
-  box-shadow: $shadow-sm;
+  background-color: var(--bg-primary);
+  box-shadow: var(--shadow-sm);
   position: relative;
-  z-index: z('sticky');
+  z-index: var(--z-sticky);
   
   .container {
-    @include flex-between;
-    padding-top: $spacing-md;
-    padding-bottom: $spacing-md;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include responsive-property(padding-top, var(--spacing-sm), var(--spacing-md));
+    @include responsive-property(padding-bottom, var(--spacing-sm), var(--spacing-md));
   }
   
   // Sticky header
@@ -20,8 +22,8 @@
     animation: slideDown 0.3s ease;
     
     .container {
-      padding-top: $spacing-sm;
-      padding-bottom: $spacing-sm;
+      padding-top: var(--spacing-sm);
+      padding-bottom: var(--spacing-sm);
     }
   }
 }
@@ -33,7 +35,7 @@
   
   .custom-logo-link {
     display: block;
-    max-width: 200px;
+    @include responsive-property(max-width, 150px, 180px, 200px);
     
     img {
       height: auto;
@@ -42,40 +44,55 @@
   }
   
   .site-title {
-    font-family: $font-primary;
-    font-size: $font-size-h3;
-    font-weight: 700;
+    font-family: var(--font-primary);
+    @include responsive-font-size(var(--font-size-xl), var(--font-size-2xl), var(--font-size-3xl));
+    font-weight: var(--font-weight-bold);
     margin: 0;
     
     a {
-      color: $muve-dark-blue;
+      color: var(--muve-dark-blue);
       text-decoration: none;
+      transition: color var(--transition-fast);
       
       &:hover {
-        color: $primary-color;
+        color: var(--color-primary);
       }
     }
   }
   
   .site-description {
-    font-size: $font-size-small;
-    color: $text-secondary;
-    margin: $spacing-xs 0 0;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin: var(--spacing-xs) 0 0;
+    
+    @include media-max(sm) {
+      display: none;
+    }
   }
 }
 
 // Mobile menu toggle
 .menu-toggle {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  padding: $spacing-sm;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 2px solid var(--muve-light-blue);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
   
-  @include breakpoint(md) {
-    display: flex;
+  @include media(lg) {
+    display: none;
+  }
+  
+  &:hover {
+    border-color: var(--muve-orange);
+    background-color: var(--muve-light-gray);
   }
   
   .menu-toggle-inner {
@@ -89,8 +106,9 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: $muve-dark-blue;
-    transition: all $transition-fast;
+    background-color: var(--muve-dark-blue);
+    transition: all var(--transition-fast);
+    border-radius: 1px;
     
     &:nth-child(1) {
       top: 0;
@@ -107,13 +125,18 @@
   }
   
   .menu-toggle-text {
-    position: absolute;
-    left: -9999px;
+    @include visually-hidden;
   }
   
   // Active state
+  &[aria-expanded="true"],
   &.active {
+    background-color: var(--muve-orange);
+    border-color: var(--muve-orange);
+    
     .menu-line {
+      background-color: white;
+      
       &:nth-child(1) {
         top: 50%;
         transform: translateY(-50%) rotate(45deg);
@@ -128,6 +151,48 @@
         transform: translateY(50%) rotate(-45deg);
       }
     }
+  }
+}
+
+// Header responsive behavior
+@include media-max(lg) {
+  .site-header {
+    .container {
+      flex-wrap: wrap;
+    }
+  }
+  
+  .site-branding {
+    flex: 1;
+  }
+  
+  .main-navigation {
+    width: 100%;
+    order: 3;
+    margin-top: var(--spacing-md);
+    
+    &.toggled {
+      display: block;
+    }
+  }
+}
+
+// Transparent header variant
+.site-header--transparent {
+  background-color: transparent;
+  box-shadow: none;
+  
+  .site-title a,
+  .menu-line {
+    color: white;
+  }
+  
+  &:not(.sticky) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-sticky);
   }
 }
 
