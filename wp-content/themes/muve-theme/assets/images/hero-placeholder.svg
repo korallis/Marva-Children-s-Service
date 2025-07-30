@@ -1,0 +1,47 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE66D;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4ECDC4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A8DADC;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg-gradient)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="700" cy="100" r="80" fill="#FF6B35" opacity="0.3"/>
+  <circle cx="100" cy="500" r="60" fill="#1D3557" opacity="0.2"/>
+  
+  <!-- Children silhouettes playing -->
+  <g transform="translate(200, 250)">
+    <!-- Child 1 -->
+    <ellipse cx="50" cy="100" rx="25" ry="30" fill="#1D3557" opacity="0.6"/>
+    <circle cx="50" cy="60" r="20" fill="#1D3557" opacity="0.6"/>
+    <rect x="40" y="80" width="20" height="40" rx="5" fill="#1D3557" opacity="0.6"/>
+    
+    <!-- Child 2 -->
+    <g transform="translate(150, 0)">
+      <ellipse cx="50" cy="100" rx="25" ry="30" fill="#1D3557" opacity="0.5"/>
+      <circle cx="50" cy="60" r="20" fill="#1D3557" opacity="0.5"/>
+      <rect x="40" y="80" width="20" height="40" rx="5" fill="#1D3557" opacity="0.5"/>
+    </g>
+    
+    <!-- Child 3 jumping -->
+    <g transform="translate(300, -30)">
+      <ellipse cx="50" cy="100" rx="25" ry="30" fill="#1D3557" opacity="0.4" transform="rotate(-15 50 100)"/>
+      <circle cx="50" cy="60" r="20" fill="#1D3557" opacity="0.4"/>
+      <rect x="40" y="80" width="20" height="40" rx="5" fill="#1D3557" opacity="0.4" transform="rotate(-15 50 100)"/>
+    </g>
+  </g>
+  
+  <!-- Playful elements -->
+  <path d="M 150 200 Q 200 150, 250 200 T 350 200" stroke="#FF6B35" stroke-width="4" fill="none" opacity="0.5"/>
+  <path d="M 450 350 Q 500 300, 550 350 T 650 350" stroke="#FFE66D" stroke-width="4" fill="none" opacity="0.5"/>
+  
+  <!-- Text placeholder -->
+  <text x="400" y="500" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#1D3557" opacity="0.3">
+    Happy Children Playing Together
+  </text>
+</svg>
