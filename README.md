@@ -1,176 +1,149 @@
 # MUVE Children's Services WordPress Website
 
-Modern WordPress website for MUVE Children's Services with playful yet professional design.
+![CI](https://github.com/korallis/Marva-Children-s-Service/workflows/CI/badge.svg)
+![WordPress](https://img.shields.io/badge/WordPress-6.7+-blue.svg)
+![PHP](https://img.shields.io/badge/PHP-8.3+-purple.svg)
+![License](https://img.shields.io/badge/license-proprietary-red.svg)
+
+Modern WordPress website for MUVE Children's Services with playful yet professional design, optimized for accessibility and performance.
+
+## 🌟 Features
+
+- **Custom WordPress Theme**: Responsive, accessible, and optimized for performance
+- **Service Management**: Custom post types for Services, Team Members, Testimonials, and Resources
+- **Docker Development**: Consistent development environment across all platforms
+- **Modern Build Process**: Laravel Mix for asset compilation
+- **Security First**: Wordfence, security headers, and best practices
+- **SEO Optimized**: Yoast SEO integration
+- **Performance**: W3 Total Cache and optimized images
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Docker Desktop installed and running
-- Git installed
-- At least 4GB RAM available
-- Port 8080 and 8081 available
 
-### Setup Instructions
+- Docker Desktop
+- Git
+- Node.js 18+
+- At least 4GB RAM
+
+### Setup
 
 1. **Clone the repository**
    ```bash
-   git clone [repository-url]
-   cd muve-childrens-service
+   git clone https://github.com/korallis/Marva-Children-s-Service.git
+   cd Marva-Children-s-Service
    ```
 
-2. **Create environment file**
-   - Copy `.env.example` to `.env` if not already present
-   - Update credentials as needed (default credentials work for local development)
-
-3. **Start Docker containers**
+2. **Start Docker containers**
    ```bash
    docker-compose up -d
    ```
 
+3. **Run setup scripts**
+   ```bash
+   ./setup-wordpress.sh
+   ./wp-cli-setup.sh
+   ./install-plugins.sh
+   ./activate-theme.sh
+   ```
+
 4. **Access the sites**
-   - WordPress: http://localhost:8080
+   - Frontend: http://localhost:8080
+   - Admin: http://localhost:8080/wp-admin
    - phpMyAdmin: http://localhost:8081
 
-5. **Complete WordPress installation**
-   - Navigate to http://localhost:8080
-   - Follow the WordPress installation wizard
-   - Site Title: MUVE Children's Services
-   - Admin Username: muve_admin
-   - Admin Password: [Choose a strong password]
-   - Admin Email: admin@muvechildrensservices.org
-
-## 📁 Project Structure
-
-```
-muve-childrens-service/
-├── docker-compose.yml     # Docker configuration
-├── .env                   # Environment variables (not in git)
-├── .gitignore            # Git ignore rules
-├── uploads.ini           # PHP upload configuration
-├── wp-content/           # WordPress content directory
-│   ├── themes/          # Custom themes
-│   ├── plugins/         # Plugins
-│   └── uploads/         # Media uploads (not in git)
-├── mysql-init/          # MySQL initialization scripts
-└── docs/                # Project documentation
-```
-
-## 🛠 Development Workflow
-
-### Starting Development
-```bash
-# Start containers
-docker-compose up -d
-
-# View logs
-docker-compose logs -f wordpress
-
-# Stop containers
-docker-compose down
-```
-
-### Accessing Containers
-```bash
-# WordPress container
-docker exec -it muve_wordpress bash
-
-# MySQL container
-docker exec -it muve_mysql mysql -u root -p
-```
+## 🛠 Development
 
 ### Theme Development
-- Custom theme location: `wp-content/themes/muve-theme/`
-- Use Docker volumes for live updates
-- Changes reflect immediately without container restart
 
-## 🔧 Configuration
+```bash
+cd wp-content/themes/muve-theme
+npm install
+npm run dev     # Development build with hot reload
+npm run build   # Production build
+```
 
-### Environment Variables
-See `.env` file for configuration options:
-- `MYSQL_ROOT_PASSWORD`: MySQL root password
-- `MYSQL_DATABASE`: WordPress database name
-- `MYSQL_USER`: WordPress database user
-- `MYSQL_PASSWORD`: WordPress database password
-- `WORDPRESS_DEBUG`: Enable WordPress debug mode
+### Project Structure
 
-### PHP Configuration
-Edit `uploads.ini` to modify:
-- Upload file size limits
-- Execution time limits
-- Memory limits
+```
+├── .github/            # GitHub Actions and templates
+├── wp-content/
+│   ├── themes/
+│   │   └── muve-theme/ # Custom theme
+│   ├── plugins/        # WordPress plugins
+│   └── uploads/        # Media files (git ignored)
+├── docker-compose.yml  # Docker configuration
+└── docs/              # Project documentation
+```
+
+## 🤖 AI Integration
+
+This repository uses Claude AI for:
+- Automated code reviews
+- Development assistance
+- Documentation help
+
+See [Claude Instructions](.github/claude-instructions.md) for details.
+
+## 🔄 GitHub Actions
+
+- **CI Pipeline**: Runs on all PRs and pushes
+- **Security Scans**: Automated vulnerability scanning
+- **Dependency Updates**: Automated via Dependabot
+- **Deployment**: Automated deployment workflows
+
+## 🧪 Testing
+
+```bash
+# PHP syntax check
+find wp-content/themes/muve-theme -name "*.php" -exec php -l {} \;
+
+# Run theme tests
+cd wp-content/themes/muve-theme
+npm test
+```
+
+## 📚 Documentation
+
+- [Project Brief](docs/project-brief.md)
+- [Product Requirements](docs/prd.md)
+- [Sprint Plan](docs/wordpress-sprint-plan.md)
+- [Test Report](test-report.md)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Coding Standards
+
+- Follow [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/)
+- Use meaningful commit messages
+- Write tests for new features
+- Ensure all tests pass before submitting PR
 
 ## 🔒 Security
 
-### Development Environment
-- Default credentials are for local development only
-- Never commit `.env` file to version control
-- Change all passwords before deployment
+- Report security vulnerabilities to: security@muvechildrensservices.org
+- Do not create public issues for security problems
+- Follow responsible disclosure practices
 
-### Production Considerations
-- Use strong passwords
-- Enable SSL/HTTPS
-- Implement security headers
-- Regular backups
-- Keep WordPress and plugins updated
+## 📄 License
 
-## 📦 Plugins
+This project is proprietary to MUVE Children's Services. All rights reserved.
 
-### Essential Plugins (to be installed)
-1. **Security**: Wordfence or Sucuri
-2. **SEO**: Yoast SEO or Rank Math
-3. **Backup**: UpdraftPlus
-4. **Performance**: WP Rocket
-5. **Forms**: Contact Form 7 or WPForms
+## 👥 Team
 
-## 🎨 Theme Development
+- Development: [@korallis](https://github.com/korallis)
+- AI Assistant: Claude
 
-### MUVE Custom Theme
-Located in `wp-content/themes/muve-theme/`
+## 📞 Support
 
-Features:
-- Mobile-first responsive design
-- MUVE brand colors and typography
-- Accessibility compliant (WCAG AA)
-- Performance optimized
+For development support, please create an issue in this repository.
 
-## 🐛 Troubleshooting
+---
 
-### Common Issues
-
-1. **Port already in use**
-   ```bash
-   # Change ports in docker-compose.yml
-   ports:
-     - "8082:80"  # Change 8080 to 8082
-   ```
-
-2. **Permission issues**
-   ```bash
-   # Fix WordPress permissions
-   docker exec muve_wordpress chown -R www-data:www-data /var/www/html
-   ```
-
-3. **Database connection errors**
-   - Check `.env` file credentials
-   - Ensure database container is running
-   - Wait for MySQL to fully initialize
-
-### Logs
-```bash
-# View all logs
-docker-compose logs
-
-# WordPress specific logs
-docker-compose logs wordpress
-
-# MySQL specific logs
-docker-compose logs db
-```
-
-## 📝 License
-
-This project is proprietary to MUVE Children's Services.
-
-## 👥 Support
-
-For development support, contact the development team.
+Built with ❤️ for MUVE Children's Services

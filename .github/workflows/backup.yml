@@ -1,0 +1,45 @@
+name: Automated Backup
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Create timestamp
+      id: timestamp
+      run: echo "timestamp=$(date +'%Y%m%d_%H%M%S')" >> $GITHUB_OUTPUT
+    
+    - name: Backup database
+      run: |
+        echo "Creating database backup..."
+        # Add database backup commands here
+        # Example: mysqldump command
+    
+    - name: Backup uploads
+      run: |
+        echo "Creating uploads backup..."
+        # Add uploads backup commands here
+        # Example: tar -czf uploads-backup.tar.gz wp-content/uploads
+    
+    - name: Upload backup to storage
+      run: |
+        echo "Uploading backup to storage..."
+        # Add upload to S3, Google Cloud Storage, etc.
+    
+    - name: Clean old backups
+      run: |
+        echo "Cleaning backups older than 30 days..."
+        # Add cleanup logic here
+    
+    - name: Notify status
+      if: always()
+      run: |
+        echo "Backup status: ${{ job.status }}"
+        # Add notification logic here

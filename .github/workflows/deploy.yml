@@ -1,0 +1,109 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+        - staging
+        - production
+
+env:
+  NODE_VERSION: '18'
+  PHP_VERSION: '8.3'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        cache-dependency-path: wp-content/themes/muve-theme/package-lock.json
+    
+    - name: Build theme assets
+      working-directory: wp-content/themes/muve-theme
+      run: |
+        npm ci
+        npm run production
+    
+    - name: Create deployment artifact
+      run: |
+        mkdir -p deployment
+        cp -r wp-content/themes/muve-theme deployment/
+        cp -r wp-content/mu-plugins deployment/ 2>/dev/null || true
+        tar -czf deployment-${{ github.sha }}.tar.gz deployment/
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: deployment-artifact
+        path: deployment-${{ github.sha }}.tar.gz
+        retention-days: 7
+        
+  deploy-staging:
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging')
+    needs: build
+    runs-on: ubuntu-latest
+    environment: staging
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: deployment-artifact
+    
+    - name: Deploy to staging
+      run: |
+        echo "Deploying to staging environment..."
+        # Add your staging deployment commands here
+        # Example: rsync, SSH, FTP, or cloud provider CLI
+        
+  deploy-production:
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production'
+    needs: build
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: deployment-artifact
+    
+    - name: Create backup
+      run: |
+        echo "Creating production backup..."
+        # Add backup commands here
+    
+    - name: Deploy to production
+      run: |
+        echo "Deploying to production environment..."
+        # Add your production deployment commands here
+        # Example: rsync, SSH, FTP, or cloud provider CLI
+    
+    - name: Verify deployment
+      run: |
+        echo "Verifying production deployment..."
+        # Add verification commands here
+        
+    - name: Notify team
+      if: always()
+      run: |
+        echo "Deployment status: ${{ job.status }}"
+        # Add notification logic (Slack, email, etc.)

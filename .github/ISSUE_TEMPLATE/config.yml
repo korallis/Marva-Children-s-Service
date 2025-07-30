@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: WordPress Support
+    url: https://wordpress.org/support/
+    about: Please ask and answer questions about WordPress core here
+  - name: Security Issue
+    url: mailto:security@muvechildrensservices.org
+    about: Please report security vulnerabilities directly via email
