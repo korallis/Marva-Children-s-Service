@@ -35,7 +35,7 @@
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.45.0",
     "sass-loader": "^16.0.5",
-    "style-loader": "^3.3.1"
+    "style-loader": "^4.0.0"
   },
   "dependencies": {
     "normalize.css": "^8.0.1"
