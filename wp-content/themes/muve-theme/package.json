@@ -21,7 +21,7 @@
   "license": "Proprietary",
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
-    "@wordpress/browserslist-config": "^4.1.0",
+    "@wordpress/browserslist-config": "^6.27.0",
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.3",
     "browser-sync": "^2.27.7",
