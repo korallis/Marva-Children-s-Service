@@ -28,7 +28,7 @@
     "browser-sync-webpack-plugin": "^2.3.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^7.1.2",
-    "cssnano": "^5.0.12",
+    "cssnano": "^7.1.0",
     "laravel-mix": "^6.0.39",
     "postcss": "^8.4.5",
     "postcss-loader": "^6.2.1",
