@@ -1,4 +1,4 @@
-// Button styles
+// Button Base Component
 .btn {
   @include button-style($primary-color);
   
@@ -8,6 +8,34 @@
   
   &.btn-accent {
     @include button-style($accent-color, $muve-dark-blue);
+  }
+  
+  &.btn-playful {
+    @include button-style($muve-yellow, $muve-dark-blue);
+    border-radius: $border-radius-lg;
+    position: relative;
+    overflow: hidden;
+    
+    &::after {
+      content: '\2728'; // Unicode for sparkles
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 1.5em;
+      opacity: 0;
+      transition: all $transition-base;
+    }
+    
+    &:hover::after {
+      opacity: 1;
+      transform: rotate(15deg) scale(1.2);
+    }
+  }
+  
+  &.btn-rounded {
+    border-radius: $border-radius-full;
+    padding-left: $spacing-xl;
+    padding-right: $spacing-xl;
   }
   
   &.btn-outline {

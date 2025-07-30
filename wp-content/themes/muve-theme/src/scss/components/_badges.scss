@@ -1,0 +1,221 @@
+// Badge Components for MUVE Theme
+
+// Base Badge
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  
+  // Badge Variants
+  &--primary {
+    background-color: var(--muve-orange);
+    color: white;
+  }
+  
+  &--secondary {
+    background-color: var(--muve-blue);
+    color: white;
+  }
+  
+  &--accent {
+    background-color: var(--muve-yellow);
+    color: var(--muve-dark-blue);
+  }
+  
+  &--success {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  &--warning {
+    background-color: var(--muve-yellow);
+    color: var(--muve-dark-blue);
+  }
+  
+  &--danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  &--info {
+    background-color: var(--muve-light-blue);
+    color: var(--muve-dark-blue);
+  }
+  
+  // Badge Sizes
+  &--small {
+    padding: 2px var(--spacing-xs);
+    font-size: 10px;
+  }
+  
+  &--large {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+  
+  // Badge Styles
+  &--outline {
+    background-color: transparent;
+    border: 2px solid currentColor;
+    
+    &.badge--primary {
+      color: var(--muve-orange);
+    }
+    
+    &.badge--secondary {
+      color: var(--muve-blue);
+    }
+    
+    &.badge--accent {
+      color: var(--muve-yellow);
+      border-color: var(--muve-yellow);
+    }
+  }
+  
+  &--playful {
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+      transform: rotate(45deg);
+      transition: all 0.6s;
+      opacity: 0;
+    }
+    
+    &:hover::before {
+      animation: shine 0.6s ease-in-out;
+    }
+  }
+}
+
+// Badge with Icon
+.badge-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  
+  &__icon {
+    font-size: 1.2em;
+  }
+}
+
+// Badge Group
+.badge-group {
+  display: inline-flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+// Notification Badge
+.notification-badge {
+  position: relative;
+  
+  &__count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    background-color: var(--muve-orange);
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 20px;
+    text-align: center;
+    border-radius: var(--radius-full);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    
+    &--pulse {
+      animation: pulse 2s infinite;
+    }
+  }
+}
+
+// Status Badge
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background-color: currentColor;
+    
+    &--animated {
+      animation: blink 1.5s infinite;
+    }
+  }
+  
+  &--active {
+    color: #28a745;
+  }
+  
+  &--inactive {
+    color: var(--text-secondary);
+  }
+  
+  &--pending {
+    color: var(--muve-yellow);
+  }
+  
+  &--error {
+    color: #dc3545;
+  }
+}
+
+// Keyframes
+@keyframes shine {
+  0% {
+    transform: rotate(45deg) translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(45deg) translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}

@@ -1,0 +1,379 @@
+// Card Components for MUVE Theme
+
+// Base Card
+.card {
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  // Card Header
+  &__header {
+    margin-bottom: var(--spacing-md);
+    
+    &--centered {
+      text-align: center;
+    }
+  }
+  
+  // Card Title
+  &__title {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-2xl);
+    color: var(--muve-dark-blue);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  // Card Subtitle
+  &__subtitle {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  // Card Body
+  &__body {
+    font-family: var(--font-secondary);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-primary);
+  }
+  
+  // Card Footer
+  &__footer {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--muve-light-gray);
+    
+    &--centered {
+      text-align: center;
+    }
+  }
+  
+  // Card Image
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+}
+
+// Service Card
+.service-card {
+  @extend .card;
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--muve-orange), var(--muve-blue), var(--muve-yellow));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-base);
+  }
+  
+  &:hover {
+    border-color: var(--muve-light-blue);
+    
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+  
+  &__icon {
+    width: 80px;
+    height: 80px;
+    background-color: var(--muve-light-blue);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-md);
+    font-size: var(--font-size-3xl);
+    color: var(--muve-dark-blue);
+    transition: all var(--transition-base);
+  }
+  
+  &:hover &__icon {
+    background-color: var(--muve-orange);
+    color: var(--muve-white);
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+// Team Member Card
+.team-card {
+  @extend .card;
+  text-align: center;
+  padding: var(--spacing-xl);
+  
+  &__image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto var(--spacing-md);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    border: 5px solid var(--muve-light-blue);
+    transition: all var(--transition-base);
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-base);
+    }
+  }
+  
+  &:hover &__image {
+    border-color: var(--muve-orange);
+    
+    img {
+      transform: scale(1.1);
+    }
+  }
+  
+  &__name {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--muve-dark-blue);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  &__role {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-base);
+    color: var(--muve-blue);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  &__bio {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+}
+
+// Testimonial Card
+.testimonial-card {
+  @extend .card;
+  background-color: var(--muve-light-gray);
+  position: relative;
+  padding: var(--spacing-xl);
+  
+  &::before {
+    content: '"';
+    position: absolute;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    font-size: var(--font-size-5xl);
+    font-family: Georgia, serif;
+    color: var(--muve-orange);
+    opacity: 0.3;
+    line-height: 1;
+  }
+  
+  &__content {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-lg);
+    font-style: italic;
+    line-height: var(--line-height-relaxed);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+  }
+  
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    
+    &-image {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      flex-shrink: 0;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    
+    &-info {
+      flex: 1;
+    }
+    
+    &-name {
+      font-family: var(--font-primary);
+      font-weight: var(--font-weight-semibold);
+      color: var(--muve-dark-blue);
+      margin-bottom: 2px;
+    }
+    
+    &-title {
+      font-family: var(--font-secondary);
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+    }
+  }
+}
+
+// Resource Card
+.resource-card {
+  @extend .card;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all var(--transition-base);
+  
+  &__type {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--muve-yellow);
+    color: var(--muve-dark-blue);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  &__content {
+    flex: 1;
+  }
+  
+  &__title {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--muve-dark-blue);
+    margin-bottom: var(--spacing-sm);
+    transition: color var(--transition-fast);
+  }
+  
+  &:hover &__title {
+    color: var(--muve-orange);
+  }
+  
+  &__description {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    line-height: var(--line-height-base);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--muve-blue);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-fast);
+    
+    &:hover {
+      color: var(--muve-orange);
+      gap: var(--spacing-sm);
+    }
+    
+    &::after {
+      content: '\2192'; // Unicode for right arrow
+      transition: transform var(--transition-fast);
+    }
+    
+    &:hover::after {
+      transform: translateX(4px);
+    }
+  }
+}
+
+// Fun Fact Card
+.fun-fact-card {
+  @extend .card;
+  background: linear-gradient(135deg, var(--muve-light-blue), var(--muve-yellow));
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    top: -100px;
+    right: -100px;
+    transition: all var(--transition-slow);
+  }
+  
+  &:hover::after {
+    transform: scale(1.5);
+  }
+  
+  &__number {
+    font-family: var(--font-display);
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--muve-dark-blue);
+    line-height: 1;
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
+  }
+  
+  &__label {
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-lg);
+    color: var(--muve-dark-blue);
+    font-weight: var(--font-weight-medium);
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Card Grid Layout
+.card-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  
+  &--2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  &--3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  &--4 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
